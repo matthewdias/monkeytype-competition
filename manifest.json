@@ -1,0 +1,17 @@
+{
+  "name": "MonkeyType Competition",
+  "description": "Local leaderboard for meetup competitions",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": ["https://monkeytype.com/"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": ["storage"]
+}
