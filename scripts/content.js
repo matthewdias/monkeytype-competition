@@ -2,6 +2,7 @@ const afterDOMLoaded = async () => {
   const { leaderboard } = await chrome.storage.local.get(["leaderboard"]);
 
   displayLeaderboard(leaderboard);
+  disableSettings();
 };
 
 if (document.readyState === "loading") {
@@ -42,6 +43,37 @@ const displayLeaderboard = (leaderboard) => {
         )
         .join("");
   }
+};
+
+const disableSettings = () => {
+  document.addEventListener(
+    "keydown",
+    (event) => {
+      if (
+        event.key === "Tab" ||
+        (event.key === "p" &&
+          event.shiftKey === true &&
+          (event.metaKey === true || event.ctrlKey === true))
+      ) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    },
+    true
+  );
+
+  document.querySelector(".view-settings").style.display = "none";
+  document.querySelector(".signInOut").style.display = "none";
+  document.querySelector("#testConfig").style.pointerEvents = "none";
+  document.querySelector("#testModesNotice").style.pointerEvents = "none";
+  document.querySelector("#restartTestButtonWithSameWordset").style.display =
+    "none";
+  document.querySelector("#practiseWordsButton").style.display = "none";
+  document.querySelector("#showWordHistoryButton").style.display = "none";
+  document.querySelector(".loginTip").style.display = "none";
+
+  document.querySelector(".keyTips").innerHTML =
+    "<key>esc</key>  - restart test";
 };
 
 const compareEntries = (a, b) => {
