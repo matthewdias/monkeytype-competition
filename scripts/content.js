@@ -62,6 +62,8 @@ const disableSettings = () => {
     true
   );
 
+  document.querySelector("#commandLineMobileButton").style.visibility =
+    "hidden";
   document.querySelector(".view-settings").style.display = "none";
   document.querySelector(".signInOut").style.display = "none";
   document.querySelector("#testConfig").style.pointerEvents = "none";
@@ -70,6 +72,7 @@ const disableSettings = () => {
     "none";
   document.querySelector("#practiseWordsButton").style.display = "none";
   document.querySelector("#showWordHistoryButton").style.display = "none";
+  document.querySelector("#saveScreenshotButton").style.display = "none";
   document.querySelector(".loginTip").style.display = "none";
 
   document.querySelector(".keyTips").innerHTML =
